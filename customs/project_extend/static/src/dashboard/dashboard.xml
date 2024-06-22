@@ -56,15 +56,34 @@
                 </div>
                     <div class="pt-5 text-center">
                         <h3>Tasks</h3>
-
                     </div>
 <!--                    kanban_state-->
-                    <div class="row m-2 p-22">
+                    <div class="row m-2 p-2">
                         <div class="col-6">
                             <div class="card">
                               <div class="card-body">
                                 <div class="text-center p-2">
-                                    <h3>Kanban State</h3>
+                                    <h3>Task Stage Analysis</h3>
+                                </div>
+                                  <table class="table table-striped">
+                                      <tbody>
+                                          <t t-foreach="state.task_stage" t-as="state" t-key="state[0]">
+                                              <tr >
+                                                  <td><t t-esc="state[0]"/></td>
+                                                  <td><t t-esc="state[1]"/></td>
+                                              </tr>
+                                          </t>
+                                      </tbody>
+                                  </table>
+                              </div>
+
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                              <div class="card-body">
+                                <div class="text-center p-2">
+                                    <h3>Task State Analysis</h3>
                                 </div>
                                   <table class="table table-striped">
                                       <tbody>
@@ -80,7 +99,15 @@
 
                             </div>
                         </div>
-                        <div class="col-6"></div>
+
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-6 text-color">
+                            <div class="oh-card-body pb-0" style="text-align:center;">
+                                <h2 style="margin-left:45%;padding-top:2%;">Project Task Analysis</h2>
+                            </div>
+                            <canvas id="project_doughnut" style="background:#fff;" width="200" height="120" />
+                        </div>
                     </div>
 
                 </div>

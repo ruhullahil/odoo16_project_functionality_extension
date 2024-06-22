@@ -22,6 +22,7 @@ export class ProjectDashboard extends Component{
 
         this.state = useState({
             kanban_state : [],
+            task_stage : [],
             projects : [],
             users : [],
             selected_project : null,
@@ -30,6 +31,8 @@ export class ProjectDashboard extends Component{
 
 
         });
+
+
 
 
         this.display = {
@@ -41,16 +44,25 @@ export class ProjectDashboard extends Component{
             try{
                 this.fetchData();
 
+
             }catch (error) {
                 console.log("---> Error --> The product object doesn't exist ", error)
             }
         });
+        onMounted(this.onMounted);
+
 
 //        onRendered(() => {
 //            // alert(this.state.currentStatus);
 //            // console.log(document.getElementById('product_brand_option'));
 //        })
     }
+
+    async onMounted() {
+		// Render other components after fetching data
+		this.render_project_task();
+
+	}
 
     async fetchData() {
         try{
@@ -59,6 +71,7 @@ export class ProjectDashboard extends Component{
                 this.state.kanban_state = result['kanban_state'];
                 this.state.projects = result['projects'];
                 this.state.users = result['users'];
+                this.state.task_stage = result['task_stage'];
             });
         }catch (error) {
             console.log("---> Error --> The product object doesn't exist ", error)
@@ -69,7 +82,32 @@ export class ProjectDashboard extends Component{
         this.state[type] = value
         console.log(type,this.state[type])
         this.fetchData()
+        this.render_project_task()
     }
+    async render_project_task() {
+            var self = this
+            this.orm.call("project.project","get_project_task_count",[this.state.selected_project,this.state.selected_users,this.state.selected_date,]
+            ).then(function(data) {
+                var ctx = $("#project_doughnut");
+                new Chart(ctx, {
+                    type: "doughnut",
+                    data: {
+                        labels: data.project,
+                        datasets: [{
+                            backgroundColor: data.color,
+                            data: data.task
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            position: 'left'
+                        },
+                        cutoutPercentage: 40,
+                        responsive: true,
+                    }
+                });
+            })
+        }
 
 //     async goto_form_view(){
 //        this.action.doAction({

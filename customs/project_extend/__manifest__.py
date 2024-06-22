@@ -37,6 +37,7 @@
         'web.assets_backend': [
             'project_extend/static/src/dashboard/dashboard.xml',
             'project_extend/static/src/dashboard/dashboard.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js',
 
         ],
     },

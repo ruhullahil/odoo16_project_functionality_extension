@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Project Entend",
+    'name': "Project Extend",
 
     'summary': """
     this module used for extend project functionality some record rule and add teams
@@ -20,11 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','project_team'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'security/security.xml',
         'views/views.xml',
         'views/templates.xml',
     ],

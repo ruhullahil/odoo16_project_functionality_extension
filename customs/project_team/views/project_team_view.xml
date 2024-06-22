@@ -118,7 +118,7 @@
             <page name="settings" position="after">
                 <page string="Team">
                     <field name="members_ids" widget="many2many">
-                        <kanban quick_create="false" create="true" delete="true">
+                        <kanban quick_create="false" create="false" delete="true">
                             <field name="id"/>
                             <field name="name"/>
                             <templates>

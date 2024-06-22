@@ -2,7 +2,6 @@
 
 {
     'name': 'Project - Set Team and members',
-    'author': 'Md. Ruhullahil Kabir',
     'maintainer': 'Ruhullahil Kabir',
     'summary': 'Project Team Management',
     'category': 'Project Management',

@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','project_team'],
+    'depends': ['base', 'project_team'],
 
     # always loaded
     'data': [
@@ -33,4 +33,11 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'project_extend/static/src/dashboard/dashboard.xml',
+            'project_extend/static/src/dashboard/dashboard.js',
+
+        ],
+    },
 }

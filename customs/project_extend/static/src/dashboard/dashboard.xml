@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="project_extend.CustomDashboard" owl="1">
+        <div class="o_action">
+            <Layout display="display">
+                <div class="container pt-3 mt-3">
+                    <div class="row ">
+                    <div class="col-4 pl-5 ml-5">
+                        <div style="padding-right: 5px;">
+                            <label for="date_filter">Date:</label>
+                            <select id="date_filter_option"
+                                    name="date_filter_option"
+                                    t-on-change="ev => this.onOptionChanged('selected_date', ev.target.value)"
+                                    t-att-value="state.selected_date"
+                                    style="display: inline-block; padding: 5px;font-size: 16px;border-radius: 5px;width: 200px; border: 1px solid #ccc;">
+                                <option value="null">All</option>
+                                <option value="last_week">Last Week</option>
+                                <option value="last_month">Last Month</option>
+                                <option value="week">Next Week</option>
+                                <option value="month">Next Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4 pl-5 ml-5">
+                        <div style="padding-right: 5px;">
+                            <label for="project_filter">Project:</label>
+                            <select id="project_filter_option"
+                                    name="project_filter_option"
+                                    t-on-change="ev => this.onOptionChanged('selected_project', ev.target.value)"
+                                    t-att-value="state.selected_project"
+                                    style="display: inline-block; padding: 5px;font-size: 16px;border-radius: 5px;width: 200px; border: 1px solid #ccc;">
+                                <option value="null">All</option>
+                                <t t-foreach="state.projects" t-as="project" t-key="project[0]">
+                                    <option t-attf-value="{{project[0]}}"><t t-esc="project[1]" /></option>
+                                </t>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-4 pl-5 ml-5">
+                        <div style="padding-right: 5px;">
+                            <label for="assign_filter">Assign:</label>
+                            <select id="assign_filter_option"
+                                    name="assign_filter_option"
+                                    t-on-change="ev => this.onOptionChanged('selected_users', ev.target.value)"
+                                    t-att-value="state.selected_users"
+                                    style="display: inline-block; padding: 5px;font-size: 16px;border-radius: 5px;width: 200px; border: 1px solid #ccc;">
+                                <option value="null">All</option>
+                                <t t-foreach="state.users" t-as="SelectOption" t-key="SelectOption[0]">
+                                    <option t-attf-value="{{SelectOption[0]}}"><t t-esc="SelectOption[1]" /></option>
+                                </t>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                    <div class="pt-5 text-center">
+                        <h3>Tasks</h3>
+
+                    </div>
+<!--                    kanban_state-->
+                    <div class="row m-2 p-22">
+                        <div class="col-6">
+                            <div class="card">
+                              <div class="card-body">
+                                <div class="text-center p-2">
+                                    <h3>Kanban State</h3>
+                                </div>
+                                  <table class="table table-striped">
+                                      <tbody>
+                                          <t t-foreach="state.kanban_state" t-as="state" t-key="state[0]">
+                                              <tr >
+                                                  <td><t t-esc="state[0]"/></td>
+                                                  <td><t t-esc="state[1]"/></td>
+                                              </tr>
+                                          </t>
+                                      </tbody>
+                                  </table>
+                              </div>
+
+                            </div>
+                        </div>
+                        <div class="col-6"></div>
+                    </div>
+
+                </div>
+
+
+
+            </Layout>
+        </div>
+    </t>
+</templates>

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import date, timedelta
 
 
 class Project(models.Model):
@@ -31,11 +32,29 @@ class Project(models.Model):
             list_users.append((user.id, user.name))
         return list_users
 
-    def get_project_task_data(self, context={}):
+    def _process_date_domain(self,selection):
+        process_dict = {
+            'last_week': -7,
+            'last_month': -30,
+            'week': 7,
+            'month': 30
+        }
+        today = date.today()
+        domain_date = today + timedelta(days=process_dict.get(selection,0))
+        return ('date_deadline','<=',domain_date)
+
+
+    @api.model
+    def get_project_task_data(self, selected_project=None, selected_user=None, selected_date=None):
         domain = [('company_id', '=', self.env.company.id)]
-        filter_data = context
-        if filter_data.get('date', None):
-            pass
+
+        if selected_project and selected_project != 'null':
+            domain.append(('project_id', '=', int(selected_project)))
+        if selected_user and selected_user != 'null':
+            domain.append(('user_ids', '=', int(selected_user)))
+        if selected_date and selected_date != 'null':
+            domain.append(self._process_date_domain(selected_date))
+
         kanban_state = self._get_stage_wise_task_data(domain=domain)
         list_project = self._get_projects()
         list_users = self._get_users()

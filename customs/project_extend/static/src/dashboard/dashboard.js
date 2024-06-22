@@ -54,7 +54,8 @@ export class ProjectDashboard extends Component{
 
     async fetchData() {
         try{
-            this.orm.call(this.model, "get_project_task_data", [this.state,]).then(result => {
+            console.log('state',this.state)
+            this.orm.call(this.model, "get_project_task_data", [this.state.selected_project,this.state.selected_users,this.state.selected_date,]).then(result => {
                 this.state.kanban_state = result['kanban_state'];
                 this.state.projects = result['projects'];
                 this.state.users = result['users'];
@@ -67,6 +68,7 @@ export class ProjectDashboard extends Component{
     console.log(type,value)
         this.state[type] = value
         console.log(type,this.state[type])
+        this.fetchData()
     }
 
 //     async goto_form_view(){

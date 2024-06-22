@@ -10,7 +10,7 @@ services:
       volumes:
         - ./data:/var/lib/postgresql/data
       ports:
-        - "6434:5432"
+        - "6435:5432"
       networks:
         - nt_toru
       restart: unless-stopped
@@ -26,7 +26,6 @@ services:
       - db
     ports:
       - "9091:8069"
-      - "80:8069"
     expose:
       - "8099"
     volumes:

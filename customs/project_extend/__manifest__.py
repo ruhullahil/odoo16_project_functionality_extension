@@ -7,17 +7,20 @@
     """,
 
     'description': """
-        Long description of module's purpose
+        Each project has a team assigned. In each team, we have members. Projects should only be visible to the team members.
+        Create a dashboard to display the total no of tasks, with filters for this week, this month, the previous week, and the previous month.
+        Good to have: Make a filter for assignees where we can click on the assignee, it will filter the tasks for the assignee.
+
     """,
 
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
+    'author': 'Md. Ruhullahil Kabir',
+    'maintainer': 'Ruhullahil Kabir',
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
+    'category': 'Project Management',
+    'version': '16.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'project_team'],

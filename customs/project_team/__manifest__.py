@@ -2,12 +2,11 @@
 
 {
     'name': 'Project - Set Team and members',
-    'author': 'Serpent Consulting Services Pvt. Ltd.',
-    'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
+    'author': 'Md. Ruhullahil Kabir',
+    'maintainer': 'Ruhullahil Kabir',
     'summary': 'Project Team Management',
     'category': 'Project Management',
-    'website': 'https://www.serpentcs.com',
-    'version': '16.0.1.0.0',
+    'version': '16.0',
     'license': 'AGPL-3',
     'depends': [
         'project',
@@ -16,8 +15,6 @@
     'data': [
         'views/project_team_view.xml',
     ],
-    'images': [
-        'static/description/ProjectTeam.png',
-    ],
+
     'installable': True,
 }
